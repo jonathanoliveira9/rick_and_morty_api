@@ -1,5 +1,11 @@
 class Api::V1::CharactersController < Api::V1::ApiController
   def index
-    render json: { test: 'Hello' }
+    @response = ::RickMortyCharacter.new(params).all_characters
+    render json: @response
+  end
+
+  def show
+    @response = ::RickMortyCharacter.new(params).character
+    render json: @response
   end
 end
