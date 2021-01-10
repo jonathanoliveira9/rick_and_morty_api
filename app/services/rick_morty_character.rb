@@ -8,7 +8,7 @@ class RickMortyCharacter
   end
   
   def characters
-    url = "/character".concat(filter_params)
+    url = "/character#{filter_params}"
     data = data_response(url)
     data.body
   end
