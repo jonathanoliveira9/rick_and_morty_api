@@ -7,10 +7,8 @@ class RickMortyCharacter
     @params = params
   end
   
-  def all_characters
-    page = params[:page]
-    url = "/character"
-    url.concat("?page=#{page}") if page.present?
+  def characters
+    url = "/character".concat(filter_params)
     data = data_response(url)
     data.body
   end
@@ -25,5 +23,14 @@ class RickMortyCharacter
 
   def data_response(params)
     Faraday.get(URL+params, { 'Accept': 'application/json' })
+  end
+
+  def filter_params
+    filter = %w[name status species type gender page]
+    url = ''
+    filter.each do |f|
+      url.concat("?#{f}=#{params[f]}") if params[f].present?
+    end
+    url
   end
 end

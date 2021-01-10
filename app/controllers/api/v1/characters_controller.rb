@@ -1,6 +1,6 @@
 class Api::V1::CharactersController < Api::V1::ApiController
   def index
-    @response = ::RickMortyCharacter.new(params).all_characters
+    @response = ::RickMortyCharacter.new(params).characters
     render json: @response
   end
 
