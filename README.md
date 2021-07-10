@@ -1,7 +1,7 @@
 
 # Rick And Morty Api
 
-# Start Project
+### Start Project
 ```sudo docker-compose build```
 
 ```sudo docker-compose up```
